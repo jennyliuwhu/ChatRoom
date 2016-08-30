@@ -17,7 +17,7 @@ app.get('/', function(req, res){
     res.render('view.html');
 });
 
-var chatroomObj = require('./chatroom');
+var chatroomObj = require('./public/javascripts/chatroom');
 var chatroom = new chatroomObj("Jenny's chat room");
 
 io.on('connection', function(socket){

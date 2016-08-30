@@ -47,7 +47,7 @@ socket.on('user joined', function(name){
         $('#name').text(name);
     }
     else{
-        $('#messages').append("<li><span class='label label-success'>" + name + " joined</span></li>");
+        $('#messages').append("<li><span class='alert alert-success'>" + name + " joined</span></li>");
     }
 });
 
@@ -57,7 +57,7 @@ socket.on('join failure', function(msg) {
 
 socket.on('user logout', function(name){
     if (name != $('#name').val()){
-        $('#messages').append("<li><span class='label label-warning'>" + name + " left</span></li>");
+        $('#messages').append("<li><span class='alert alert-warning'>" + name + " left</span></li>");
     }
 });
 
@@ -69,7 +69,7 @@ socket.on('refresh online users', function(users){
 });
 
 socket.on('send message', function(msg) {
-    var msg = "<li class='media'> <small class='text-success'>" + msg.name+ " @ " + msg.time + ": <br> <span class='text-muted'>" + msg.message + "<hr></li>";
+    var msg = "<li class='media'> <span class='text-success'>" + msg.name+ " @ " + msg.time + ": <br> <span class='text-muted'>" + msg.message + "<hr></li>";
     $('#messages').append(msg);
     var panel = $('#messages-panel');
     panel.animate({'scrollTop': panel.prop("scrollHeight") - panel.height() }, 10);
