@@ -8,13 +8,13 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-require('jade');
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.engine('jade', require('jade').__express);
+app.engine('html', require('consolidate').handlebars);
+app.set('view engine', 'html');
+
 app.get('/', function(req, res){
-    res.render('ui-view');
+    res.render('view.html');
 });
 
 var chatroomObj = require('./chatroom');
@@ -49,10 +49,10 @@ io.on('connection', function(socket){
 
     // user send message
     socket.on('send message', function(msg){
-        var current_time = new Date();
-        current_time = current_time.toLocaleTimeString() + ' ' + current_time.toDateString();
-        chatroom.sendMessage(socket.id, msg, current_time);
-        io.emit('send message', {name: chatroom.getUsers()[socket.id], time: current_time, message: msg});
+        var now = new Date();
+        now = now.toLocaleTimeString() + ' ' + now.toDateString();
+        chatroom.sendMessage(socket.id, msg, now);
+        io.emit('send message', {name: chatroom.getUsers()[socket.id], time: now, message: msg});
     });
 });
 

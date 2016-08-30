@@ -1,0 +1,66 @@
+<!--
+    front-end, ui
+    @author jialingliu
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jenny's ChatRoom</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    div.lobster {
+        font-family: Lobster,monospace
+    }
+</style>
+<body>
+<div style="margin-top:100px;margin-right:100px" class="container-fluid">
+    <div id="join" class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div style="font-size: 30px" class="panel-heading text-center lobster">Jenny's ChatRoom</div>
+                <div class="panel-body">
+                    <input type="text" id="name" placeholder="Type your name" class="form-control">
+                </div>
+                <div style="text-align:center" class="panel-footer">
+                    <form id="join-form">
+                        <button type="submit" style="font-size: 20px" class="btn btn-primary lobster">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="chatroom" class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div style="font-size: 30px" class="panel-heading lobster">History<span style="margin-left:20px" class="hidden-lg"></span><a href="#" style="color: white" class="disconnect pull-right">Logout</a></div>
+                <div id="messages-panel" style="height:400px; max-height:800px; overflow-y: auto;" class="panel-body">
+                    <ul id="messages" class="media-list"></ul>
+                </div>
+                <div class="panel-footer">
+                    <form id="send">
+                        <div class="input-group">
+                            <input type="text" id="m" placeholder="Type your message" class="form-control"><span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">Send &nbsp</button>
+                    <button id="seeUsers" type="submit" class="btn btn-info">Online Users</button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="onlineUsers" class="col-md-2">
+            <div class="panel panel-info">
+                <div style="font-size: 30px" class="panel-heading lobster">Online Users</div>
+                <div style="height:400px;max-height: 800px;overflow-y: auto;" class="panel-body">
+                    <ul id="users" class="media-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="javascripts/client.js"></script>
+</html>
