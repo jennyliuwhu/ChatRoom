@@ -7,7 +7,6 @@ var _ = require('underscore');
 var sqlite3 = require("sqlite3").verbose();
 
 function Chatroom(chatroom) {
-    // var room = this;
     this.users = {}; // user map, socket_id : username
     this.messages = []; // messages array of maps, {message: content, name: user_name, time: sent_time}
     //create sqlite table messages
