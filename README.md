@@ -3,12 +3,12 @@
 ## Use case:
 
 <br>
-<img src="https://github.com/jialingliu/ChatRoom/blob/master/assets/join.png>
+<img src="https://github.com/jialingliu/ChatRoom/blob/master/assets/join.png />
 </br>
 
 
 <br>
-<img src="https://github.com/jialingliu/ChatRoom/blob/master/assets/room.png>
+<img src="https://github.com/jialingliu/ChatRoom/blob/master/assets/room.png />
 </br>
 
 As an individual project of course Foundation of Software Engineering, skills used are listed as follow.
