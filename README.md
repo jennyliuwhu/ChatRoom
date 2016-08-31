@@ -11,6 +11,10 @@
 <img src="https://github.com/jialingliu/ChatRoom/blob/master/assets/room.png" />
 </br>
 
+
+Here is a short demo for the application: https://www.youtube.com/watch?v=7K8NaMInoDI
+
+
 As an individual project of course Foundation of Software Engineering, skills used are listed as follow.
 
 Tech checklist
@@ -26,7 +30,7 @@ Areas of improvement
 
 	• When the server restarts, all chatting history is gone, which can be super dangerous if the messages are important.
 
-	  But for our use case, it should not a problem.
+	  But for our use case, it should not be a problem.
 
 	• If time permits, add more fancy features such as to indicate which user is typing, to support choosing emoji and file transfer.
 
