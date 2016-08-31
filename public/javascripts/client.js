@@ -47,7 +47,7 @@ socket.on('user joined', function(name){
         $('#name').text(name);
     }
     else{
-        $('#messages').append("<li><span class='alert alert-success'>" + name + " joined</span></li>");
+        $('#messages').append("<li><span class='alert alert-success'>" + name + " joined</span><hr></li>");
     }
 });
 
@@ -57,7 +57,7 @@ socket.on('join failure', function(msg) {
 
 socket.on('user logout', function(name){
     if (name != $('#name').val()){
-        $('#messages').append("<li><span class='alert alert-warning'>" + name + " left</span></li>");
+        $('#messages').append("<li><span class='alert alert-warning'>" + name + " left</span><hr></li>");
     }
 });
 

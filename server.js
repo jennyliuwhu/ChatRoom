@@ -17,18 +17,18 @@ app.get('/', function(req, res){
     res.render('view.html');
 });
 
-var chatroomObj = require('./public/javascripts/chatroom');
-var chatroom = new chatroomObj("Jenny's chat room");
+var Chatroom = require('./public/javascripts/Chatroom');
+var room = new Chatroom("Jenny's chat room");
 
 io.on('connection', function(socket){
     // user join
     socket.on("join", function(name){
-        var joined = chatroom.join(name, socket.id);
+        var joined = room.join(name, socket.id);
         if (joined){
             io.emit("user joined", name);
-            io.emit("refresh online users", chatroom.getUsers());
+            io.emit("refresh online users", room.getUsers());
             //load existing messages from the DB
-            var msgs = chatroom.getMessages();
+            var msgs = room.getMessages();
             for (var index = 0; index < msgs.length; index++) {
                 socket.emit('send message', msgs[index]);
             }
@@ -51,18 +51,18 @@ io.on('connection', function(socket){
     socket.on('send message', function(msg){
         var now = new Date();
         now = now.toLocaleTimeString() + ' ' + now.toDateString();
-        chatroom.sendMessage(socket.id, msg, now);
-        io.emit('send message', {name: chatroom.getUsers()[socket.id], time: now, message: msg});
+        room.sendMessage(socket.id, msg, now);
+        io.emit('send message', {name: room.getUsers()[socket.id], time: now, message: msg});
     });
 });
 
 // user disconnected
 var logout = function(socket) {
-    var name = chatroom.getUsers()[socket.id];
+    var name = room.getUsers()[socket.id];
     if(name != null) {
-        chatroom.leave(socket.id);
+        room.leave(socket.id);
         io.emit("user logout", name);
-        io.emit("refresh online users", chatroom.getUsers());
+        io.emit("refresh online users", room.getUsers());
     }
 };
 
